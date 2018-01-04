@@ -11,7 +11,7 @@ listPopes <- list()
 
 for(i in c(1:19,21:22)){
   name <- paste0("tab",i)
-  a <- html_table(tmp[[i]])[-1,]
+  a <- html_table(tmp[[i]], fill = T)[-1,]
   listPopes[[name]] <- a
 }
 
@@ -48,6 +48,7 @@ namesFreq <- popesNames_filter %>%
 
 filter(namesFreq, n > 4) %>%
   ggplot(., aes(x=reorder(name, -n), y=n)) + geom_col() + coord_flip() +
-  xlab("Wybrane imię") + ylab("")
+  xlab("Wybrane imię") + ylab("") +
+  theme_light()
 
   
